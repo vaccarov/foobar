@@ -1,0 +1,71 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+    &__title {
+        font-size: 2em;
+        line-height: 2em;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__half {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    &__robots {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        &-robot {
+            display: flex;
+            align-items: center;
+            width: 50%;
+
+            &-status {
+                cursor: pointer;
+                position: relative
+            }
+
+            &-icon {
+                font-size: 3em;
+            }
+
+            & .disabled {
+                color: gray;
+            }
+        }
+    }
+
+    &__ressources {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        border: 1px solid;
+        border-radius: 5px;
+
+        & > div:first-child {
+            text-align: center;
+            font-size: 2em;
+            line-height: 2em;
+        }
+    }
+}
+
+.legende {
+
+    &-action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+    }
+}
