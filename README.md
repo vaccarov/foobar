@@ -8,7 +8,7 @@
 * `npm run e2e`
 * Click on the test file 'build_robot.spec.js' and let the game play itself
 
-## Utilisation
+## How to use
 * Game starts with 2 robots
 * Clicking on it show possible actions
 * Click on the selected action
