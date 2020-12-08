@@ -3,6 +3,9 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    background-color: #34495e;
+    height: 100%;
+    box-sizing: border-box;
 
     &__title {
         font-size: 2em;
@@ -17,6 +20,14 @@
         display: flex;
         flex-direction: column;
         width: 50%;
+        padding: 20px;
+        background-color: #95a5a6;
+        border-radius: 5px;
+        overflow: auto;
+
+        &:first-child {
+            margin-right: 20px;
+        }
     }
 
     &__robots {
@@ -24,19 +35,24 @@
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
+        overflow: auto;
 
         &-robot {
             display: flex;
             align-items: center;
-            width: 50%;
-
-            &-status {
-                cursor: pointer;
-                position: relative
-            }
+            width: calc(50% - 10px);
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 5px;
 
             &-icon {
-                font-size: 3em;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+
+                & > span {
+                    font-size: 3em;
+                }
             }
 
             & .disabled {
@@ -49,18 +65,20 @@
         display: flex;
         flex-direction: column;
         padding: 10px;
-        border: 1px solid;
+        background-color: #ecf0f1;
         border-radius: 5px;
+        border-bottom: 1px solid #95a5a6;
+        margin-bottom: 10px;
+        overflow: auto;
 
-        & > div:first-child {
-            text-align: center;
-            font-size: 2em;
-            line-height: 2em;
+        &-list {
+            overflow: auto;
+            display: flex;
         }
     }
 }
 
-.legende {
+.caption {
 
     &-action {
         display: flex;

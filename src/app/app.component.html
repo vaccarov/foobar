@@ -1,76 +1,76 @@
 <div class='container'>
-
   <div class='container__half'>
-    <div class='container__title'>Liste des robots {{robots.length}}/20 :</div>
+    <div class='container__title'>Robot list ({{actionService.robots.length}}/20) :</div>
     <div class='container__robots'>
-      <div class='container__robots-robot' *ngFor='let robot of robots'>
-        <div class='container__robots-robot-status'>
+      <div *ngFor='let robot of actionService.robots; let i = index'
+        class='container__robots-robot'
+        [class.disabled]='robot.unavailability'
+        [matMenuTriggerFor]="menu">
+        <div class='container__robots-robot-icon' [attr.data-cy]='"robot_"+i'>
+          <span class="material-icons">memory</span>
           <app-status [status]='robot.actions[0]'></app-status>
-          <span class="container__robots-robot-icon material-icons"
-            [class.disabled]='robot.indisponible'
-            [matMenuTriggerFor]="menu">memory</span>
         </div>
-        <span *ngIf='robot.indisponible'>Indisponibilité: {{robot.indisponible | number:'0.0-2'}}s</span>
+        <span *ngIf='robot.unavailability'>Unavailability: {{robot.unavailability | number:'0.0-2'}}s</span>
         <mat-menu #menu="matMenu">
           <button mat-menu-item
           *ngFor='let action of actions'
           [style.backgroundColor]='action.value | action'
-          (click)='lancer(robot, action.value)'>
+          (click)='launch(robot, action.value)'
+          [attr.data-cy]='"robot_"+i+"_action_"+action.key'>
             {{action.value}}
           </button>
         </mat-menu>
       </div>
     </div>
   </div>
-
   <div class='container__half'>
-    <div>
-      <div class='container__title'>
-        Ressources
-        <button mat-raised-button [matMenuTriggerFor]="legendeMenu">Légende</button>
-      </div>
-      <mat-menu #legendeMenu="matMenu">
+    <div class='container__title'>
+      Ressources
+      <button mat-raised-button [matMenuTriggerFor]="captionMenu">Caption</button>
+      <mat-menu #captionMenu="matMenu">
         <div *ngFor='let action of actions'
-          class='legende-action'
+          class='caption-action'
           [style.backgroundColor]='action.value | action'>
           <div>{{action.value}}</div>
         </div>
-        <div class='legende-action'>
+        <div class='caption-action'>
           Foos <span class="material-icons">add_circle_outline</span>
         </div>
-        <div class='legende-action'>
+        <div class='caption-action'>
           Bars <span class="material-icons">add_circle</span>
         </div>
-        <div class='legende-action'>
+        <div class='caption-action'>
           Foobar <span class="material-icons">send</span>
         </div>
-        <div class='legende-action'>
+        <div class='caption-action'>
           Euro <span class="material-icons">euro</span>
         </div>
       </mat-menu>
     </div>
-    <div class='container__ressources' *ngIf='foos'>
-      <div>total foos : {{foos}}</div>
+    <div class='container__ressources'>
       <div>
-        <span class="material-icons" *ngFor='let f of [].constructor(foos)'>add_circle_outline</span>
+        <div>Foos : {{actionService.foos}}</div>
+        <div class='container__ressources-list' *ngIf='actionService.foos'>
+          <span class="material-icons" *ngFor='let f of [].constructor(actionService.foos)'>add_circle_outline</span>
+        </div>
       </div>
-    </div>
-    <div class='container__ressources' *ngIf='bars'>
-      <div>total bars : {{bars}}</div>
       <div>
-        <span class="material-icons" *ngFor='let b of [].constructor(bars)'>add_circle</span>
+        <div>Bars : {{actionService.bars}}</div>
+        <div class='container__ressources-list' *ngIf='actionService.bars'>
+          <span class="material-icons" *ngFor='let b of [].constructor(actionService.bars)'>add_circle</span>
+        </div>
       </div>
-    </div>
-    <div class='container__ressources' *ngIf='foobar'>
-      <div>total foobars : {{foobar}}</div>
       <div>
-        <span class="material-icons" *ngFor='let b of [].constructor(foobar)'>send</span>
+        <div>Foobars : {{actionService.foobar}}</div>
+        <div class='container__ressources-list' *ngIf='actionService.foobar'>
+          <span class="material-icons" *ngFor='let b of [].constructor(actionService.foobar)'>send</span>
+        </div>
       </div>
-    </div>
-    <div class='container__ressources' *ngIf='argent'>
-      <div>total argent : {{argent}}</div>
       <div>
-        <span class="material-icons" *ngFor='let b of [].constructor(argent)'>euro</span>
+        <div>Money : {{actionService.money}}</div>
+        <div class='container__ressources-list' *ngIf='actionService.money'>
+          <span class="material-icons" *ngFor='let b of [].constructor(actionService.money)'>euro</span>
+        </div>
       </div>
     </div>
   </div>

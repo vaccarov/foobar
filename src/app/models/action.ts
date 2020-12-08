@@ -1,8 +1,8 @@
 export enum Action {
-    'move' = 'Se déplacer',
-    'minerFoo' = 'Miner du `foo`',
-    'minerBar' = 'Miner du `bar`',
-    'assembler' = 'Assembler un `foobar`',
-    'vendre' = 'Vendre des `foobar`',
-    'acheter' = 'Acheter un robot'
+    move = 'Move to an activity',
+    mineFoo = 'Mine `foo`',
+    mineBar = 'Mine `bar`',
+    buildFoobar = 'Build a `foobar`',
+    sell = 'Sell `foobar`',
+    buy = 'Buy a robot'
 }
